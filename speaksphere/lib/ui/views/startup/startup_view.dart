@@ -15,16 +15,70 @@ class StartupView extends StackedView<StartupViewModel> {
     Widget? child,
   ) {
     return Scaffold(
-        body: Container(
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            Colors.black,
-            Color(0xff9F4F4F),
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Colors.black,
+              Color(0xff9F4F4F),
+            ],
+          ),
+        ),
+        child: Column(
+          children: [
+            const SizedBox(height: 100),
+            Stack(
+              children: [
+                Align(
+                  alignment: Alignment.topRight,
+                  child: SvgPicture.asset('assets/svg/gear.svg'),
+                ),
+                // Positioned(
+                //   right: 90,
+                //   top: 50,
+                //   child: SvgPicture.asset('assets/svg/gear.svg'),
+                // ),
+                Positioned(
+                  top: 50,
+                  left: MediaQuery.sizeOf(context).width * 0.15,
+                  child: Center(
+                    child: SizedBox(
+                      child: SvgPicture.asset('assets/svg/speaksphere.svg'),
+                    ),
+                  ),
+                ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.center,
+                //   crossAxisAlignment: CrossAxisAlignment.end,
+                //   children: [
+                //     Center(
+                //       child: SizedBox(
+                //         child: SvgPicture.asset('assets/svg/speaksphere.svg'),
+                //       ),
+                //     ),
+                //     Row(
+                //       mainAxisAlignment: MainAxisAlignment.end,
+                //       children: [
+                //         Align(
+                //           alignment: Alignment.topRight,
+                //           child: SvgPicture.asset('assets/svg/gear.svg'),
+                //         ),
+                //       ],
+                //     ),
+                //   ],
+                // )
+              ],
+            ),
+            const SizedBox(height: 150),
+            SvgPicture.asset('assets/svg/speakImage.svg'),
           ],
         ),
       ),
-    ));
+    );
   }
 
   @override
@@ -33,7 +87,7 @@ class StartupView extends StackedView<StartupViewModel> {
   ) =>
       StartupViewModel();
 
-  @override
-  void onViewModelReady(StartupViewModel viewModel) => SchedulerBinding.instance
-      .addPostFrameCallback((timeStamp) => viewModel.runStartupLogic());
+  // @override
+  // void onViewModelReady(StartupViewModel viewModel) => SchedulerBinding.instance
+  //     .addPostFrameCallback((timeStamp) => viewModel.runStartupLogic());
 }
